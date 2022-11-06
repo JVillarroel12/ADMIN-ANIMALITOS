@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buscar Taquilla</ion-title>
+    <ion-button slot="end" color="danger" (click)="cerrarModal()">
+      <ion-icon name="close-outline"></ion-icon
+    ></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="searchTaquilla">
+    <ion-searchbar placeholder="Buscar Taquilla" [(ngModel)]="search" ngDefaultControl></ion-searchbar>
+  </ion-row>
+  <ion-row class="contentTaquillas">
+    <section class="lines">
+      <div class="grid columns-head" style="background-color: var(--green-gray-2);">
+        <span class="grid__nombre">
+          <ion-label style="font-weight: bold;">ENCARGADO</ion-label>
+        </span>
+        <span class="grid__descripcion">
+          <ion-label style="font-weight: bold;">Descripcion</ion-label>
+        </span>
+        <span class="grid__comision">
+          <ion-label style="font-weight: bold;">COMISION</ion-label>
+        </span>
+        <span class="grid__activo">
+          <ion-label style="font-weight: bold;">ACTIVO</ion-label>
+        </span>
+      </div>
+      <span class="grid" *ngFor="let data of taquillas | filter:search" (dblclick)="seleccionarTaquilla(data)">
+        <span class="grid__nombre">{{data.nombre}}</span>
+        <span class="grid__descripcion">{{data.descripcion}}</span>
+        <span class="grid__comision">{{data.pcje_vendedor}}%</span>
+        <span class="grid__activo">
+          <ion-checkbox readonly mode="ios" [checked]="data.activo"></ion-checkbox>
+        </span>
+      </span>
+    </section>
+  </ion-row>
+</ion-content>

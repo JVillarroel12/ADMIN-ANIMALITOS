@@ -1,0 +1,69 @@
+<ion-content class="content" [fullscreen]="true">
+  <div class="dashboard">
+    <header class="dashboard__header only-chip">
+      <div class="home">
+        LOGO
+      </div>
+
+      <div class="user-chip">
+        <ion-chip class="user">
+          <ion-icon name="person"></ion-icon>
+
+          <ion-label class="user__name">{{nombreUsuario}}</ion-label>
+        </ion-chip>
+      </div>
+      <ion-button color="danger" slot="end" (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </header>
+
+    <main class="dashboard__principal">
+      <section class="container-all">
+        <aside class="left-menu">
+
+          <span class="item" (click)="assignComponent('viewEstaciones')">
+            <span class="item__icon">
+              <ion-icon name="file-tray"></ion-icon>
+            </span>
+            <span class="item__text"> Taquillas 
+            </span>
+          </span>
+          <span class="item" (click)="assignComponent('viewSorteos')">
+            <span class="item__icon">
+              <ion-icon name="ticket"></ion-icon>
+            </span>
+            <span class="item__text"> Asignar Loterias 
+            </span>
+          </span>
+          <span class="item" (click)="assignComponent('viewTopes')">
+            <span class="item__icon">
+              <ion-icon name="swap-vertical"></ion-icon>
+            </span>
+            <span class="item__text"> Asignar Topes 
+            </span>
+          </span>
+          <span class="item" (click)="assignComponent('viewBloquearAnimalitos')" *ngIf="permisoUsuario == true">
+            <span class="item__icon">
+              <ion-icon name="ban"></ion-icon>
+            </span>
+            <span class="item__text"> Bloquear Animalitos 
+            </span>
+          </span>
+          <span class="item" (click)="assignComponent('viewUsuarios')" *ngIf="permisoUsuario == true">
+            <span class="item__icon">
+              <ion-icon name="person"></ion-icon>
+            </span>
+            <span class="item__text"> Usuarios
+            </span>
+          </span>
+        </aside>
+
+        <aside class="right-content">
+          <section class="window">
+            <ng-container *ngComponentOutlet="componentSelected"></ng-container>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </div>
+</ion-content>

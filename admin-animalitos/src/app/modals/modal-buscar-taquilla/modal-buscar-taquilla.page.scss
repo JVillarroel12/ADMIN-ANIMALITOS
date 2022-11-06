@@ -1,0 +1,122 @@
+ion-header{
+    ion-toolbar{
+        width: 100%;
+        --background: var(--green-success);
+        color: black;
+    }
+}
+ion-content{
+    width: 100%;
+    height: 100%;
+    --background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .searchTaquilla{
+        width: 100%;
+        height: 60px;
+        background-color: var(--green-gray);
+    }
+    .contentTaquillas{
+        width: 100%;
+        height: calc(100% - 60px);
+        background-color: var(--green-gray);
+        .lines {
+          width: 100%;
+          height: calc(100% - 80px);
+          overflow-y: scroll;
+
+          .grid{
+              width: 100%;
+              grid-template-rows: 100%;
+              display: grid;
+              grid-template-columns: 25% 25% 25% 25% ;
+              grid-template-areas: "nombre descripcion comision activo" ;
+              cursor: pointer;
+              // border-top: 1px solid black;
+              // border-right: 1px solid black;
+              color
+              &.columns-head {              
+                  color: white !important;  
+                  height: 60px;
+                }
+              &__nombre,
+              &__descripcion,
+              &__comision,
+              &__usuario,
+              &__telefono,
+              &__activo,
+              &__configuration {
+      
+                font-size: 1rem;
+      
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+              }
+      
+              &__nombre {
+                grid-area: nombre;
+                padding-top: 15px;
+                padding-bottom: 15px;
+              }
+              &__descripcion {
+                grid-area: descripcion;
+              }
+              &__comision {
+                grid-area: comision;
+              }
+      
+              &__usuario {
+                grid-area: usuario;
+              }
+              &__telefono{
+                grid-area: telefono;
+              }
+              &__activo{
+                  grid-area: activo;
+                }
+              &__opciones{
+                grid-area: opciones;
+                ion-icon{
+                  color: white;
+                  padding: 5px;
+                  font-size: 18px;
+                  border-radius: 5px;
+                  margin-right: 10px;
+                  cursor: pointer;
+                  margin-top: -4px;
+                }
+                .anular{
+                  background-color: var(--ion-color-danger);
+                }
+                .pagar{
+                  background-color: var(--green-success);
+                }
+              }
+          }
+          .grid{
+          //   &:nth-child(odd) {
+          //     background-color: rgb(71, 71, 71);
+          //   }
+  
+          //   &:nth-child(even) {
+          //     background-color: rgb(128, 128, 128);
+          //   }
+             > span{
+               height: 45px;
+              padding-top: 10px;
+              padding-bottom: 10px;
+              border-bottom: 1px solid black;
+              color: black;
+              text-align: center;
+              ion-icon{
+                  font-size: 22px !important;
+                  color: var(--ion-color-danger)
+              }
+             } 
+          }
+      }
+    }
+}

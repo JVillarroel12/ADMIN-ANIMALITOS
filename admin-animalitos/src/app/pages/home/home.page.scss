@@ -1,0 +1,179 @@
+.dashboard {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #ffffff;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 55px calc(100% - 55px);
+  grid-template-areas:
+    "header header"
+    "principal principal";
+
+  position: relative;
+
+  &__header {
+    grid-area: header;
+
+    z-index: 99;
+
+    background-color: rgb(70, 70, 70);
+
+    //box-shadow: 0px 10px 26px 3px rgba(0, 0, 0, 0.4);
+
+    display: flex;
+    align-items: center;
+    color: white;
+    .home {
+      width: 30%;
+      padding-left: 1rem;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      ion-icon {
+        color: var(--font-principal);
+        font-size: 2rem;
+
+        @media (max-width: 1280px) {
+          font-size: 1.5rem;
+        }
+
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: var(--background-accent);
+        }
+      }
+
+      img {
+        width: auto;
+        height: 2.5rem;
+      }
+    }
+
+    .user-chip {
+      width: 30%;
+      padding: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .user {
+      background-color: whitesmoke;
+
+        ion-label{
+          color: black;
+          font-size: 18px;
+        }
+        ion-icon{
+          font-size: 20px;
+          color: var(--green-success);
+        }
+      }
+    }
+
+    &.only-chip {
+      .home {
+        width: 50%;
+      }
+
+      .user-chip {
+        width: 50%;
+      }
+    }
+  }
+
+  &__principal {
+    grid-area: principal;
+
+    background: radial-gradient(#50c1f4, #75a3d6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container-all {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 100% !important;
+      max-height: 100% !important;
+
+      z-index: 80;
+
+      background-color: white;
+
+      display: grid;
+      grid-template-columns: 300px calc(100% - 300px);
+      grid-template-rows: 100%;
+      grid-template-areas: "leftAUX rightAUX";
+
+      .left-menu {
+        grid-area: leftAUX;
+        background-color: var(--green-success);
+
+        .item {
+          width: 100%;
+          padding: 0.75rem 0.25rem;
+
+          background: var(--background-principal-light-1);
+          border-bottom: 2px solid black;
+          display: flex;
+
+          cursor: pointer;
+
+          &__icon {
+            width: 20%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            ion-icon {
+              color: var(--background-accent);
+              font-size: 25px;
+            }
+          }
+
+          &__text {
+            width: 80%;
+
+            font-size: 1.15rem;
+            color: var(--background-accent);
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+         
+        }
+        .item:hover{
+          background-color: var(--green-gray-2);
+          color: white !important;
+        }
+      }
+
+      .right-content {
+        grid-area: rightAUX;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .window {
+          min-width: 99% !important;
+          width: 99% !important;
+          max-width: 99% !important;
+          min-height: 98% !important;
+          height: 98% !important;
+          max-height: 98% !important;
+        }
+      }
+    }
+  }
+
+}
+
+

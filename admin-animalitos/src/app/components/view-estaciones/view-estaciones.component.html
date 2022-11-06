@@ -1,0 +1,93 @@
+<div class="header">
+  <ion-icon name="file-tray"></ion-icon>
+  <ion-title>TAQUILLAS</ion-title>
+</div>
+<ion-content>
+  <ion-row class="addEstaciones">
+    <div class="title">
+      <ion-card >
+        <ion-card-content>
+          REGISTRAR UNA TAQUILLA
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <form action="" [formGroup]="formTaquilla">
+      <div class="content">
+        <ion-card>
+          <ion-label>Nombre y Apellido:</ion-label>
+          <ion-input formControlName="nombre" placeholder="Nombre y apellido"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Cedula:</ion-label>
+          <ion-input type="number" formControlName="cedula" placeholder="Cedula"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Direccion:</ion-label>
+          <ion-input formControlName="direccion" placeholder="Direccion"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Telefono:</ion-label>
+          <ion-input type="number" formControlName="telefono" placeholder="Telefono"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Descripcion:</ion-label>
+          <ion-input formControlName="descripcion" placeholder="Nombre de la taquilla"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Usuario:</ion-label>
+          <ion-input formControlName="usuario" placeholder="Usuario"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Clave:</ion-label>
+          <ion-input type="password" formControlName="clave" placeholder="Clave"></ion-input>
+        </ion-card>
+
+        <ion-card>
+          <ion-label>Comision del vendedor:</ion-label>
+          <ion-input formControlName="comision" type="number" placeholder="Comision"></ion-input>
+          <ion-checkbox mode="ios" formControlName="pcje_v_ventas"></ion-checkbox>
+        </ion-card>
+
+        <ion-button class="columns2" (click)="crearTaquilla()" [disabled]="!formTaquilla.valid">
+          Crear
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </form>
+  </ion-row>
+  <ion-row class="listEstaciones">
+    <ion-searchbar placeholder="Buscar Taquilla" [(ngModel)]="search" ngDefaultControl></ion-searchbar>
+    <section class="lines">
+      <div class="grid columns-head" style="background-color: var(--green-gray-2);">
+        <span class="grid__nombre">
+          <ion-label style="font-weight: bold;">ENCARGADO</ion-label>
+        </span>
+        <span class="grid__descripcion">
+          <ion-label style="font-weight: bold;">Descripcion</ion-label>
+        </span>
+        <span class="grid__comision">
+          <ion-label style="font-weight: bold;">COMISION</ion-label>
+        </span>
+        <span class="grid__usuario">
+          <ion-label style="font-weight: bold;">USUARIO</ion-label>
+        </span>
+        <span class="grid__telefono">
+          <ion-label style="font-weight: bold;">Telefono</ion-label>
+        </span>
+        <span class="grid__activo">
+          <ion-label style="font-weight: bold;">ACTIVO</ion-label>
+        </span>
+      </div>
+      <span class="grid" *ngFor="let data of taquillas | filter:search">
+        <span class="grid__nombre">{{data.nombre}}</span>
+        <span class="grid__descripcion">{{data.descripcion}}</span>
+        <span class="grid__comision">{{data.pcje_vendedor}}%</span>
+        <span class="grid__usuario">FALTA</span>
+        <span class="grid__telefono">{{data.telefono}}</span>
+        <span class="grid__activo">
+          <ion-checkbox readonly mode="ios" [checked]="data.activo"></ion-checkbox>
+        </span>
+      </span>
+    </section>
+  </ion-row>
+</ion-content>

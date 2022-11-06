@@ -1,0 +1,11 @@
+ion-header{
+    ion-toolbar{
+        width: 100%;
+        --background: var(--green-success);
+        color: black;
+    }
+}
+ion-content{
+    width: 100%;
+    --background: white;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "admin-animalitos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

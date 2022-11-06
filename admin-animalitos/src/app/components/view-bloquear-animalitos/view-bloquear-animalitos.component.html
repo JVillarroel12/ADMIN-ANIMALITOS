@@ -1,0 +1,47 @@
+<div class="header">
+  <ion-icon name="ban"></ion-icon>
+  <ion-title>Bloquear Animalitos</ion-title>
+</div>
+<ion-content>
+  <ion-row class="rowButtonBloquear">
+    <ion-button (click)="contentBloqueo('global')">Bloquear Animalitos Global</ion-button>
+    <ion-button (click)="contentBloqueo('estacion')">Bloquear Animalitos por Estacion</ion-button>
+  </ion-row>
+  <ion-row class="rowContentLoterias">
+    <ion-col size="12" class="title">
+      <ion-card *ngIf="searchEstacion == false">
+        GLOBAL
+      </ion-card>
+      <ion-card *ngIf="searchEstacion == true">
+          BUSCAR ESTACION
+      </ion-card>
+    </ion-col>
+    <ion-col size="12" class="colLoterias">
+        <ion-list>
+          <div class="loterias" *ngFor="let data of loterias">
+            <ion-icon name="caret-forward-outline" style="margin-left: 5px;" *ngIf="data.mostrarLoterias == false" (click)="mostrarLoterias(data)"></ion-icon>
+            <ion-icon name="caret-down-outline" style="margin-left: 5px;" *ngIf="data.mostrarLoterias == true" (click)="mostrarLoterias(data)"></ion-icon>
+            <span>{{data.descripcion}}</span>
+  
+  
+            <div *ngIf="data.mostrarLoterias" class="contentResultados">
+              <div *ngFor="let sorteo of data.sorteos" class="resultados">
+                <ion-card (click)="modalBloquearAnimalitos(data.animalitos,sorteo)">
+                  <ion-card-header>
+                    <ion-icon name="ticket-outline"></ion-icon>
+                    <span>{{sorteo.hora}}</span>
+                  </ion-card-header>
+                    <div>
+                      <span>Total Bs: </span><span>8000bs</span>
+                    </div>
+                    <div>
+                      <span>Total $: </span><span>100$</span>
+                    </div>
+                </ion-card>
+              </div>
+            </div>
+          </div>
+        </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,223 @@
+
+ion-content{
+    --background: white;
+    width: 100%;
+    height: calc(100% - 55px);
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        width: 0px;
+        background:transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: rgb(83, 83, 83);
+        width: 2px;
+        border-radius: 25px;
+    }
+    .inner-scroll {
+        scrollbar-width: thin;
+        width: 2px;
+    }
+    .searchTaquilla{
+        width: 100%;
+        height: 60px;
+        background-color: var(--green-gray);
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;  
+        .content{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            justify-content: center;
+            align-items: center;
+            align-content: center;     
+            .columns2{
+                grid-column: span 2;
+            }
+            ion-button{
+                width: 49.5%;
+                --background: var(--green-success);
+                color: black;
+                font-size: 17px;
+            }
+            ion-icon{
+
+                margin-left: 5px;
+            }
+        }
+
+    }
+    .rowTitle{
+        width: 100%;
+        height: 335px;
+        background-color: var(--green-gray);
+        border-radius: 5px;
+        margin-top: 10px;
+        .title{
+            width: 100%;
+            height: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            justify-content: center;
+            align-items: center;
+            align-content: center;     
+            .columns2{
+                grid-column: span 2;
+            }
+            ion-card{
+                width: 49.5%;
+                height: 40px;
+                padding: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                --background: var(--green-success);
+                color: black;
+                font-size: 17px;
+            }
+        }
+        .content{
+            width: 100%;
+            height: calc(100% - 50px);
+            overflow-y: scroll;
+            form{
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                justify-items: center;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                ion-card{
+                    width: 99%;
+                    height: 40px;
+                    padding: 5px;
+                    display: flex;
+                    margin: 0;
+                    margin-top: 5px;
+                    justify-content: space-between;
+                    align-items: center;
+                    --background: white;
+                    color: black;
+                    font-size: 17px;
+                }
+                .columns2{
+                    width: 49.5%;
+                    grid-column: span 2;
+                }  
+                ion-button{
+                    --background: var(--ion-color-success);
+                    color: black;
+                    font-size: 17px;
+                    margin-top: 10px;
+                } 
+                ion-icon{
+                    margin-left: 5px;
+                }
+            };
+
+        }
+
+    }
+    .linesSorteosTaquillas{
+        width: 100%;
+        height: 393px;
+        background-color: var(--green-gray);
+        border-radius: 5px;
+        margin-top: 10px;
+        .lines {
+            width: 100%;
+            height: calc(100% - 60px);
+            overflow-y: scroll;
+
+            .grid{
+                width: 100%;
+                grid-template-rows: 100%;
+                display: grid;
+                grid-template-columns: 25% 25% 25% 25%;
+                grid-template-areas: "sorteo taquilla activo borrar" ;
+
+                // border-top: 1px solid black;
+                // border-right: 1px solid black;
+                color
+                &.columns-head {              
+                    color: black;  
+                    height: 60px;
+                  }
+                &__sorteo,
+                &__taquilla,
+                &__clave,
+                &__activo,
+                &__borrar,
+                &__configuration {
+        
+                  font-size: 1rem;
+        
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+
+                }
+        
+                &__sorteo {
+                  grid-area: sorteo;
+                }
+        
+                &__taquilla {
+                  grid-area: taquilla;
+                }
+        
+                &__activo{
+                    grid-area: activo;
+                }
+                &__borrar{
+                    grid-area: borrar;
+                }
+                &__opciones{
+                  grid-area: opciones;
+                  ion-icon{
+                    color: white;
+                    padding: 5px;
+                    font-size: 18px;
+                    border-radius: 5px;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    margin-top: -4px;
+                  }
+                  .anular{
+                    background-color: var(--ion-color-danger);
+                  }
+                  .pagar{
+                    background-color: var(--green-success);
+                  }
+                }
+            }
+            .grid{
+            //   &:nth-child(odd) {
+            //     background-color: rgb(71, 71, 71);
+            //   }
+    
+            //   &:nth-child(even) {
+            //     background-color: rgb(128, 128, 128);
+            //   }
+               > span{
+                 height: 45px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid black;
+                color: black;
+                text-align: center;
+                ion-icon{
+                    font-size: 22px !important;
+                    color: var(--ion-color-danger)
+                }
+               } 
+            }
+        }
+    }
+
+}

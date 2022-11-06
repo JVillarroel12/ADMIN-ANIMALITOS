@@ -1,0 +1,69 @@
+<div class="header">
+  <ion-icon name="ticket"></ion-icon>
+  <ion-title>SORTEOS</ion-title>
+</div>
+<ion-content>
+  <ion-row class="searchTaquilla">
+    <div class="content">
+      <ion-button class="columns2" (click)="modalBuscarTaquilla()">
+        BUSCAR TAQUILLA
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+  </ion-row>
+  <ion-row class="rowTitle" *ngIf="mostrarSorteos == true">
+    <div class="title">
+      <ion-card class="columns2">
+        DATOS DE LA TAQUILLA
+      </ion-card>
+    </div>
+    <div class="content" >
+      <form action="" [formGroup]="formAgregarLoterias">
+        <ion-card style="--background: var(--green-success); color: black;">
+          <ion-label>NOMBRE:</ion-label>
+          <ion-label> {{taquilla.descripcion}}</ion-label>
+        </ion-card>
+        <ion-card style="--background: var(--green-success); color: black;">
+          <ion-label>ENCARGADO: </ion-label>
+          <ion-label>{{taquilla.nombre}}</ion-label>
+        </ion-card>
+        <ion-card *ngFor="let data of loterias">
+          <ion-label>{{data.descripcion}}</ion-label>
+          <ion-checkbox mode="ios" formControlName="checkLoteria" (ionChange)="activarLoterias($event, data)"></ion-checkbox>
+        </ion-card>
+        <ion-button class="columns2" (click)="asignarLoterias()">
+          Guardar
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </form> 
+    </div>
+
+  </ion-row>
+  <ion-row class="linesSorteosTaquillas" *ngIf="mostrarSorteos == true">
+      <ion-searchbar placeholder="Buscar Sorteo" [(ngModel)]="search" ngDefaultControl></ion-searchbar>
+      <section class="lines">
+        <div class="grid columns-head">
+          <span class="grid__sorteo">
+            <ion-label style="font-weight: bold;">DESCRIPCION</ion-label>
+          </span>
+          <span class="grid__taquilla">
+            <ion-label style="font-weight: bold;">Min. Animalito</ion-label>
+          </span>
+          <span class="grid__activo">
+            <ion-label style="font-weight: bold;">Max. Animalito</ion-label>
+          </span>
+          <span class="grid__borrar">
+            <ion-label style="font-weight: bold;"></ion-label>
+          </span>
+        </div>
+        <span class="grid" *ngFor="let data of loteriasTaquillas | filter:search">
+          <span class="grid__sorteo">{{data.nameAux}}</span>
+          <span class="grid__taquilla">{{data.minxanimals}}</span>
+          <span class="grid__activo">{{data.maxxanimals}}</span>
+          <span class="grid__borrar"><ion-icon name="trash-outline"></ion-icon></span>
+
+        </span>
+      </section>
+  </ion-row>
+</ion-content>

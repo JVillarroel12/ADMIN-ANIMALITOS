@@ -1,0 +1,95 @@
+<div class="header">
+  <ion-icon name="file-tray"></ion-icon>
+  <ion-title>USUARIOS</ion-title>
+</div>
+<ion-content>
+  <ion-row class="addUsuario">
+    <div class="title">
+      <ion-card >
+        <ion-card-content>
+          REGISTRAR UN USUARIO
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <form action="" [formGroup]="formUsuario">
+      <div class="content">
+        <ion-card>
+          <ion-label>Nombre y Apellido:</ion-label>
+          <ion-input formControlName="nombre" placeholder="Nombre y apellido"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Cedula:</ion-label>
+          <ion-input type="number" formControlName="cedula" placeholder="Cedula"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Telefono:</ion-label>
+          <ion-input type="number" formControlName="telefono" placeholder="Telefono"></ion-input>
+        </ion-card>
+
+        <ion-card>
+          <ion-label>Usuario:</ion-label>
+          <ion-input formControlName="usuario" placeholder="Usuario"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Clave:</ion-label>
+          <ion-input type="password" formControlName="clave" placeholder="Clave"></ion-input>
+        </ion-card>
+        <ion-card>
+          <ion-label>Seleccionar Rol</ion-label>
+          <ion-select interface="popover" placeholder="Rol" (ionChange)="seleccionarRol($event)" formControlName="selectRol">
+            <ion-select-option value="0">BANQUERO</ion-select-option>
+            <ion-select-option value="1">DISTRIBUIDOR</ion-select-option>
+          </ion-select>
+        </ion-card>
+        <ion-card *ngIf="mostrarComisionDistribuidor == true">
+          <ion-label>Comision del distribuidor:</ion-label>
+          <ion-input formControlName="comision" type="number" placeholder="Comision"></ion-input>
+          <ion-checkbox mode="ios" formControlName="pcje_d_ventas"></ion-checkbox>
+        </ion-card>
+        <ion-card>
+          <ion-label>Descripcion:</ion-label>
+          <ion-input formControlName="descripcion" placeholder="Descripcion"></ion-input>
+        </ion-card>
+        <ion-button class="columns2" (click)="crearUsuario()" [disabled]="!formUsuario.valid">
+          Crear
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </form>
+  </ion-row>
+  <ion-row class="listUsuarios">
+    <ion-searchbar placeholder="Buscar Usuario" [(ngModel)]="search" ngDefaultControl></ion-searchbar>
+    <section class="lines">
+      <div class="grid columns-head" style="background-color: var(--green-gray-2);">
+        <span class="grid__nombre">
+          <ion-label style="font-weight: bold;">Nombre</ion-label>
+        </span>
+        <span class="grid__rol">
+          <ion-label style="font-weight: bold;">Rol</ion-label>
+        </span>
+        <span class="grid__comision">
+          <ion-label style="font-weight: bold;">COMISION</ion-label>
+        </span>
+        <span class="grid__usuario">
+          <ion-label style="font-weight: bold;">USUARIO</ion-label>
+        </span>
+        <span class="grid__telefono">
+          <ion-label style="font-weight: bold;">Telefono</ion-label>
+        </span>
+        <span class="grid__activo">
+          <ion-label style="font-weight: bold;">ACTIVO</ion-label>
+        </span>
+      </div>
+      <span class="grid" *ngFor="let data of usuarios">
+        <span class="grid__nombre">{{data.nombre}}</span>
+        <span class="grid__rol">{{data.rolAux}}</span>
+        <span class="grid__comision">{{data.pcje_distrbuidor}}</span>
+        <span class="grid__usuario">{{data.userAux}}</span>
+        <span class="grid__telefono">{{data.telefono}}</span>
+        <span class="grid__activo">
+          <ion-checkbox readonly mode="ios" [checked]="data.activo"></ion-checkbox>
+        </span>
+      </span>
+    </section>
+  </ion-row>
+</ion-content>

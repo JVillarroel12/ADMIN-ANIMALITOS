@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>LOGIN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login">
+
+      <div size="12" class="input">
+        <div class="header">
+          Login
+        </div>
+        <div class="content">
+          <form action="" [formGroup]="formLogin">
+              <ion-card>
+                <ion-icon name="person"></ion-icon>
+                <ion-input type="text" placeholder="Usuario" formControlName="user"></ion-input>
+              </ion-card>
+              <ion-card>
+                <ion-icon name="lock-closed"></ion-icon>
+                <ion-input type="password" placeholder="Contraseña" formControlName="password" (keypress)="pressonLogin($event.charCode)"></ion-input>
+              </ion-card>
+              <ion-button type="submit"  (click)="onLogin()">Ingresar</ion-button>
+          </form>
+        </div>
+
+      </div>
+  </div>    
+</ion-content>
